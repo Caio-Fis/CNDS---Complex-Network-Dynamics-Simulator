@@ -1,100 +1,90 @@
-Complex Network Dynamics Simulator
+# Complex Network Dynamics Simulator
 
-https://screenshot.png
-Visualização 3D interativa de dinâmica em rede complexa
-🌐 Visão Geral
+**Visualização 3D interativa de dinâmica em rede complexa**
 
-O Complex Network Dynamics Simulator é uma ferramenta de visualização interativa que permite explorar dinâmicas em redes complexas usando modelos de Ising. Com uma interface 3D intuitiva, você pode observar como diferentes tipos de redes e modelos de atualização influenciam o comportamento do sistema.
-✨ Recursos Principais
+---
 
-    🕸️ Dois tipos de rede:
+![Descrição alternativa da imagem](img/diagrama1.png)
 
-        Redes aleatórias (Erdős-Rényi)
+## 🌐 Visão Geral
 
-        Redes contínuas (espaço métrico com condições periódicas)
+O **Complex Network Dynamics Simulator** é uma ferramenta de visualização interativa que permite explorar dinâmicas em redes complexas. Com uma interface 3D intuitiva, você pode observar como diferentes tipos de redes e modelos de atualização influenciam o comportamento do sistema.
 
-    🔄 Dois modelos de atualização:
+---
 
-        Modelo Majority Vote
+## ✨ Recursos Principais
 
-        Modelo Vote Model
+- 🕸️ **Dois tipos de rede:**
+  - Redes aleatórias (Erdős–Rényi)  
+  - Redes contínuas (espaço métrico com condições periódicas)
 
-    🎨 Visualização 3D interativa:
+- 🔄 **Dois modelos de atualização:**
+  - Modelo Majority Vote  
+  - Modelo Vote Model
 
-        Rotação, zoom e panorâmica
+- 🎨 **Visualização 3D interativa:**
+  - Rotação, zoom e panorâmica  
+  - Código de cores para estados dos nós (+1 vermelho, –1 azul)  
+  - Nós selecionados destacados em verde
 
-        Código de cores para estados dos nós (+1 vermelho, -1 azul)
+- ⚙️ **Personalização completa:**
+  - Número de nós  
+  - Magnetização inicial  
+  - Grau médio  
+  - Nível de ruído  
+  - Nós selecionados por passo
 
-        Nós selecionados destacados em verde
+- 💾 **Recursos avançados:**
+  - Salvar configuração atual  
+  - Reinicialização com último estado
+  - Captura de telas em sequência (formato PPM)
 
-    ⚙️ Personalização completa:
+---
 
-        Número de nós (10-1000)
+## 📋 Pré-requisitos
 
-        Magnetização inicial
+- Compilador C (GCC, Clang ou MinGW)  
+- Bibliotecas gráficas:
+  - OpenGL  
+  - GLUT (FreeGLUT)  
+- Ferramenta `make` (recomendado)
 
-        Grau médio
+---
 
-        Nível de ruído
+## 🛠️ Instalação
 
-        Nós selecionados por passo
-
-    💾 Recursos avançados:
-
-        Salvar configuração atual
-
-        Reinicialização com último estado
-
-        Captura de telas em sequência (formato PPM)
-
-📋 Pré-requisitos
-
-    Compilador C (GCC, Clang ou MinGW)
-
-    Bibliotecas gráficas:
-
-        OpenGL
-
-        GLUT (FreeGLUT)
-
-    Ferramenta make (recomendado)
-
-🛠️ Instalação
-Windows (MSYS2)
-bash
-
-# Instale o MSYS2: https://www.msys2.org/
-# Abra o terminal MSYS2 MinGW 64-bit
+## Windows (MSYS2)
+#### Instale o MSYS2: https://www.msys2.org/
+#### Abra o terminal MSYS2 MinGW 64-bit
+```bash
 pacman -Syu
 pacman -S --needed mingw-w64-x86_64-toolchain mingw-w64-x86_64-freeglut
 git clone https://github.com/seu-usuario/project-network.git
 cd project-network
 make
 make run
+```
 
-Linux (Ubuntu/Debian)
-bash
-
+## Linux (Ubuntu/Debian)
+```bash
 sudo apt update
 sudo apt install build-essential freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev git
 git clone https://github.com/seu-usuario/project-network.git
 cd project-network
 make
 ./bin/complex-network-sim
-
-Linux (Fedora)
-bash
-
+```
+## Linux (Fedora)
+```bash
 sudo dnf groupinstall "Development Tools"
 sudo dnf install freeglut-devel mesa-libGLU-devel git
 git clone https://github.com/seu-usuario/project-network.git
 cd project-network
 make
 ./bin/complex-network-sim
-
-macOS
-bash
-
+```
+## macOS
+```bash
 # Instale Homebrew (caso não tenha)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -105,103 +95,53 @@ git clone https://github.com/seu-usuario/project-network.git
 cd project-network
 make
 ./bin/complex-network-sim
+```
 
 🧪 Compilação Manual (sem Makefile)
-bash
-
+```bash
 gcc -Wall -Wextra -O3 -Iinclude src/main.c src/network.c src/graphics.c \
     -o bin/complex-network-sim \
     -lglut -lGLU -lGL -lm
+```
 
-🕹️ Como Usar
-⚙️ Configuração Inicial
+---
+
+## 🕹️ Como Usar
 
 Ao iniciar o programa, configure os parâmetros:
 
-    Número de nós (2-1000)
+	Tipo de rede (Aleatória ou Contínua)
 
-    Magnetização inicial (0.0-1.0)
+	Modelo de atualização (Majority Vote ou Vote Model)
 
-    Grau médio (1 a N-1)
+    Número de nós
 
-    Ruído (0.0-1.0)
+    Magnetização inicial
 
-    Nós selecionados por passo (1 a N)
+    Grau médio 
 
-    Tipo de rede (Aleatória ou Contínua)
+    Ruído
 
-    Modelo de atualização (Majority Vote ou Vote Model)
+    Nós selecionados por passo
 
-🎮 Controles durante a simulação
-Tecla	Ação
-Espaço	Reiniciar simulação
-ESC	Sair do programa
-+	Aumentar velocidade de simulação
--	Diminuir velocidade de simulação
-W	Zoom in
-S	Zoom out
-P	Pausar/retomar simulação
-R	Resetar câmera
-I	Mostrar informações do sistema
-Mouse	Arrastar para rotacionar
-Scroll	Zoom
-🔧 Personalização Avançada
 
-Modifique valores padrão em src/network.c:
-c
+## 🎮 Controles durante a simulação
 
-// Valores iniciais padrão
-int NUM_NODES = 100;
-float MAG_INIT = 0.55;
-int K_AVG = 10;
-float NOISE = 0.0;
-int SELECT_NODES = 1;
+| Tecla  | Ação                           |
+| ------ | ------------------------------ |
+| Espaço | Reiniciar simulação            |
+| ESC    | Sair do programa               |
+| `+`    | Aumentar velocidade            |
+| `-`    | Diminuir velocidade            |
+| W      | Zoom in                        |
+| S      | Zoom out                       |
+| P      | Pausar/retomar simulação       |
+| R      | Resetar câmera                 |
+| I      | Mostrar informações do sistema |
+| Mouse  | Arrastar para rotacionar       |
+| Scroll | Zoom                           |
 
-🗂️ Estrutura do Projeto
-text
-
-project-network/
-├── bin/               # Executável compilado
-├── include/           # Cabeçalhos
-│   ├── graphics.h
-│   └── network.h
-├── src/               # Código fonte
-│   ├── graphics.c
-│   ├── main.c
-│   └── network.c
-├── Makefile           # Script de compilação
-└── README.md          # Documentação
-
-🧩 Adicionando Novas Funcionalidades
-Para novo tipo de rede:
-
-    Implemente a função em network.c
-
-    Adicione ao registro:
-
-c
-
-NetworkType networkTypes[] = {
-    {"Aleatoria", RandomNetwork},
-    {"Continua", continuosNetwork},
-    {"Nova Rede", NovaRede}  // <= Adicione aqui
-};
-
-Para novo modelo de atualização:
-
-    Implemente a função de atualização
-
-    Adicione ao registro:
-
-c
-
-UpdateModelType updateModels[] = {
-    {"Majority Vote", updateNetwork_MajorityVote},
-    {"Vote Model", updateNetwork_VoteModel},
-    {"Novo Modelo", NovoModelo}  // <= Adicione aqui
-};
-
-📸 Capturas de Tela
+## 📸 Capturas de Tela
 
 Para habilitar captura automática de frames:
 
@@ -210,32 +150,3 @@ Para habilitar captura automática de frames:
     Descomente savePPM(frame); na função idle()
 
     Frames serão salvos em frr_save/ no formato PPM
-
-📜 Licença
-
-Este projeto está licenciado sob a Licença MIT.
-🤝 Contribuição
-
-Contribuições são bem-vindas! Siga estes passos:
-
-    Faça um fork do projeto
-
-    Crie sua branch (git checkout -b feature/nova-feature)
-
-    Commit suas mudanças (git commit -m 'Adiciona nova feature')
-
-    Push para a branch (git push origin feature/nova-feature)
-
-    Abra um Pull Request
-
-📧 Contato
-
-Para dúvidas ou sugestões:
-
-    Seu Nome
-
-    Repositório GitHub
-
-Explore a beleza das redes complexas! 🌐✨
-New chat
-AI-generated, for reference only
