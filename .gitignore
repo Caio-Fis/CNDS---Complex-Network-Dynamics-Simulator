@@ -1,0 +1,51 @@
+### Arquivo .gitignore Atualizado
+
+```gitignore
+# Executáveis e binários
+/bin/
+*.exe
+
+# Objetos de compilação
+*.o
+*.a
+*.so
+*.dll
+
+# Artefatos de compilação
+*.obj
+*.lib
+*.exp
+*.pdb
+
+# Arquivos de backup e temporários
+*~
+*.bak
+*.swp
+*.swo
+
+# Diretórios de dados gerados
+/frr_save
+
+# Arquivos específicos do sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Arquivos do IDE
+.vscode/
+.idea/
+*.cbp
+*.layout
+*.depend
+*.user
+
+# Arquivos de log
+*.log
+*.tlog
+
+# Arquivos gerados pelo usuário
+*.ppm
+/screenshots/
+
+# Dependências externas
+/deps/
